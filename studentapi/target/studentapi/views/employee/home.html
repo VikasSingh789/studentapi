@@ -1,0 +1,70 @@
+<html>
+<head></head>
+<body>
+	<div align="center"">
+		<div ng-show="editEmployeeFlagList">
+			<input type="button" value="Add New Employee" ng-click="insert()">
+			<input type="button" value="queryJson" ng-click="queryJson()">
+           <div>
+            <p align="right">Search:<input type="text" ng-model="search.ename"> <br>
+             </p>
+            
+           </div>
+           
+			<table border="1">
+				<tr>
+				    <th>S.no</th>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>Action</th>
+
+				</tr>
+				<tr ng-repeat="employee in employ | filter:search ">
+				   <td>{{$index+1}}</td>
+					<td>{{ employee.eid }}</td>
+					<td>{{ employee.ename }}</td>
+					<td>{{employee.email}}</td>
+					<td>{{employee.address}}</td>
+					<td><input type="button" value="edit"
+						ng-click="editEmployee(employee)" /> <input type="button"
+						value="delete" ng-click="remove(employee.eid)"></td>
+				</tr>
+
+			</table>
+
+            <p> Total Records:{{(employ | filter:search).length}}
+		</div>
+
+
+		<div ng-hide="editEmployeeFlagList">
+
+           <p align="right"><input type="button" value="Back" ng-click="backEmployee()"/></p>
+
+
+			Employee Id: {{employee.eid}}<br> 
+			Employee Name: <input
+				type="text" value={{employee.ename}} ng-model="employee.ename"><br> 
+				
+			Employee Email:{{employee.email}}<br>
+			
+			Employee designation: <select required
+				value={{employee.designation}} ng-model="employee.designation">
+				<option value="developer">Developer</option>
+				<option value="testing">Testing</option>
+				<option value="networking">Networking</option>
+				<option value="hardware">Hardware</option>
+			</select><br> 
+			
+			Employee Address:<textarea rows="2" cols="4" value={{employee.address}} ng-model="employee.address"></textarea><br>
+			
+			<input type="button" value="update"
+				ng-click="saveEmployee(employee)" />
+				
+				
+		</div>
+	</div>
+</body>
+
+</html>

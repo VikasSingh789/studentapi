@@ -1,0 +1,62 @@
+<html>
+<head></head>
+<body>
+	<div align="center"">
+		<div ng-show="editEmployeeFlagList">
+			<input type="button" value="Add New Employee" ng-click="insert()">
+			<input type="button" value="queryJson" ng-click="queryJson()">
+           <div>
+            <p align="right">Search:<input type="text" ng-model="search.sname"> <br>
+             </p>
+            
+           </div>
+           
+			<table border="1">
+				<tr>
+				    <th>S.no</th>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>Action</th>
+				</tr>
+				<tr ng-repeat="student in students | filter:search ">
+				   <td>{{$index+1}}</td>
+					<td>{{ student.sid }}</td>
+					<td>{{ student.sname }}</td>
+					<td>{{student.email}}</td>
+					<td>{{student.address}}</td>
+					<td><input type="button" value="edit" ng-click="editEmployee(student)" /> 
+						<input type="button" value="delete" ng-click="remove(student.sid)">
+					</td>
+				</tr>
+
+			</table>
+
+            <p> Total Records:{{(students | filter:search).length}}
+		</div>
+
+
+		<div ng-hide="editEmployeeFlagList">
+
+           <p align="right"><input type="button" value="Back" ng-click="backEmployee()"/></p>
+
+
+			Student Id: {{employee.sid}}<br> 
+			Student Name: <input
+				type="text" value={{employee.sname}} ng-model="employee.sname"><br> 
+				
+			Student Email:{{employee.email}}<br>
+			
+			
+			Student Address:<textarea rows="2" cols="4" value={{employee.address}} ng-model="employee.address"></textarea><br>
+			
+			<input type="button" value="update"
+				ng-click="saveEmployee(employee)" />
+				
+				
+		</div>
+	</div>
+</body>
+
+</html>

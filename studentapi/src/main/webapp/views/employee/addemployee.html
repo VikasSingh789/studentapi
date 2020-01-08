@@ -1,0 +1,21 @@
+
+<html>
+<body>
+	<div align="center">
+	<form novalidate class="simple-form" name="myform">
+
+       <p align="right"><input type="button" value="Back" ng-click="backEmployeeList()"/></p>
+       
+		Student Name:<span style="color:red">*</span> <input type="text" ng-model="employee.sname" required><br>
+		
+		Student Email_Id:<input type="email" name="emailAddress" ng-model="employee.email" required>
+		<br>
+		
+		Student Address:<textarea rows="2" cols="4" ng-model="employee.address"></textarea>
+		 <input type="submit" value="add"
+			ng-click="addEmployee(employee)" ng-disabled="myform.$invalid" />
+
+	</form>
+	</div>
+</body>
+</html>

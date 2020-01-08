@@ -1,0 +1,35 @@
+
+<html>
+<body>
+	<div align="center">
+	<form novalidate class="simple-form" name="myform">
+
+       <p align="right"><input type="button" value="Back" ng-click="backEmployeeList()"/></p>
+       
+		Employee Name:<span style="color:red">*</span> <input type="text" ng-model="employee.ename" required><br>
+		
+		Employee Email_Id:<input type="email" name="emailAddress" ng-model="employee.email" required>
+		<span style="color:red" ng-messages="myform.emailAddress.$error">
+		  <!-- <span ng-message="required">Please enter ur email</span> -->
+		  <span ng-message="email">you entered invalid email</span>
+		</span>
+		
+		<br>
+		
+		 Employee Designation: <select required
+			ng-model="employee.designation">
+			<option value="">Select Designation</option>
+			<option value="developer">Developer</option>
+			<option value="testing">Testing</option>
+			<option value="networking">Networking</option>
+			<option value="hardware">Hardware</option>
+		</select><br>
+		
+		Employee Address:<textarea rows="2" cols="4" ng-model="employee.address"></textarea>
+		 <input type="submit" value="add"
+			ng-click="addEmployee(employee)" ng-disabled="myform.$invalid" />
+
+	</form>
+	</div>
+</body>
+</html>
